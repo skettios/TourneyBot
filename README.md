@@ -1,0 +1,4 @@
+TourneyBot
+==========
+
+TournamentBot for csgo
