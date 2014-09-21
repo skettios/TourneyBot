@@ -1,0 +1,401 @@
+﻿"Phrases"
+{
+	"Safe Mode"
+	{
+		"fr"			"Mode de sécurité activé, la fonctionnalité est désactivée."
+	}
+	"Match Reset"
+	{
+		"fr"			"Le match a été reset, la partie n'est pas en cours!"
+	}
+	"Half Reset"
+	{
+		"fr"			"Le side a été reset, le partie n'est pas en cours!"
+	}
+	"Half Time"
+	{
+		"fr"			"Fin du side! Merci de swap les équipes."
+	}
+	"Half Time Auto Swap"
+	{
+		"fr"			"Fin du side! Swap en cours."
+	}
+	"Full Time"
+	{
+		"fr"			"Le match est fini! GG."
+	}
+	"Over Time"
+	{
+		"#format"		"{1:i}" 
+		"fr"			"Overtime! MR{1}"
+	}
+	"Over Time Sudden Death"
+	{
+		"fr"			"Overtime! Mort subite."
+	}
+	"Playing Out Notice"
+	{
+		"#format"		"{1:i}" 
+		"fr"			"Note : La totalité des {1} rounds doivent être joués!"
+	}
+	"Ready"
+	{
+		"fr"			"Vous êtes désormais ready."
+	}
+	"Not Ready"
+	{
+		"fr"			"Vous êtes désormais unready."
+	}
+	"Score Overtime"
+	{
+		"fr"			"Overtime: "
+	}
+	"Score Overall"
+	{
+		"fr"			"Overall: "
+	}
+	"Knife Round Cancelled"
+	{
+		"fr"			"Knife annulé, le match n'est pas live."
+	}
+	"Knife Round Inactive"
+	{
+		"fr"			"Le Knife Round n'est pas actif."
+	}
+	"Ready System Enabled"
+	{
+		"fr"			"Ready System - Activé"
+	}
+	"Ready System Disabled"
+	{
+		"fr"			"Ready System - Desactivé"
+	}
+	"Set Active"
+	{
+		"fr"			"WarMod Actif."
+	}
+	"Set Inactive"
+	{
+		"fr"			"WarMod Inactif."
+	}
+	"Console Ready"
+	{
+		"fr"			"La console n'est pas ready."
+	}
+	"Console Not Ready"
+	{
+		"fr"			"La console ne peut être marquée unready."
+	}
+	"Not on Team"
+	{
+		"fr"			"Vous n'êtes pas dans une équipe."
+	}
+	"Already Ready"
+	{
+		"fr"			"Vous êtes déjà ready."
+	}
+	"Already Not Ready"
+	{
+		"fr"			"Vous êtes déjà unready."
+	}
+	"Forced Ready"
+	{
+		"fr"			"Tous les joueurs ont été forcés à être ready."
+	}
+	"Forced Not Ready"
+	{
+		"fr"			"Tous les joueurs ont été forcés à être unready."
+	}
+	"Forced Spectate"
+	{
+		"fr"			"Tous les joueurs ont été envoyés en spec."
+	}
+	"Match Not In Progress"
+	{
+		"fr"			"Le match n'est pas lancé!"
+	}
+	"T Winning"
+	{
+		"#format"		"{1:s}" 
+		"fr"			"{1} gagnent !"
+	}
+	"Tied"
+	{
+		"fr"			"Egalité."
+	}
+	"CT Winning"
+	{
+		"#format"		"{1:s}" 
+		"fr"			"{1} gagnent !"
+	}
+	"Change Teams Midgame"
+	{
+		"fr"			"Blocké - Match en cours."
+	}
+	"Maximum Players"
+	{
+		"fr"			"Les équipes ont atteint la limite maximale de joueurs."
+	}
+	"Nightvision Blocked"
+	{
+		"fr"			"Night vision desactivée."
+	}
+	"Grenades Blocked"
+	{
+		"fr"			"Grenades desactivées durant le warmup."
+	}
+	"Ready System"
+	{
+		"fr"			"Ready System"
+	}
+	"Match Begin Msg"
+	{
+		"#format"		"{1:i}" 
+		"fr"			"Le match commencera quand les {1} joueurs seront ready."
+	}
+	"No Players Found"
+	{
+		"fr"			"Joueurs non trouvés."
+	}
+	"Info Not Ready"
+	{
+		"fr"			"Unready:"
+	}
+	"Info Exit"
+	{
+		"fr"			"Fermer"
+	}
+	"Ready System Disabled2"
+	{
+		"fr"			"La mise en ready est désactivée."
+	}
+	"ShowInfo Disabled" 
+	{
+		"fr"			"L'affichage du système Ready n'est pas activé"
+	}
+	"Match Is Live"
+	{
+		"fr"			"Le match est en cours."
+	}
+	"WarMod Inactive"
+	{
+		"fr"			"WarMod est désactivé"
+	}
+	"Change T Name"
+	{
+		"#format"		"{1:s}"
+		"fr"			"Le tag des Terroristes est '{1}'"
+	}
+	"Change CT Name"
+	{
+		"#format"		"{1:s}"
+		"fr"			"Le tag des Contre-Terroristes est '{1}'"
+	}
+	"Console"
+	{
+		"fr"			"WarMod: "
+	}
+	"Available Commands"
+	{
+		"fr"			"Commandes clientes disponibles"
+	}
+	"No Permission"
+	{
+		"fr"			"Vous n'avez pas la permission d'utiliser cette commande"
+	}
+	"Set Minready"
+	{
+		"#format"		"{1:i}"
+		"fr"			"Le wm_min_ready est à {1}"
+	}
+	"Set Maxrounds"
+	{
+		"#format"		"{1:i}"
+		"fr"			"Le wm_max_rounds est à {1}"
+	}
+	"WarMod Rcon Only"
+	{
+		"fr"			"Les commandes admins ont été limitées au RCON."
+	}
+	"Set Password"
+	{
+		"#format"		"{1:s}"
+		"fr"			"Le password est '{1}'"
+	}
+	"Autokick"
+	{
+		"fr"			"Vous avez été kick automatiquement par le serveur"
+	}
+	"Names Required"
+	{
+		"fr"			"Le match ne sera pas RS tant que les deux noms de teams ne sont pas mis."
+	}
+	"Pause Freeze Time"
+	{
+		"fr"			"La pause se fera au prochain freezetime"
+	}
+	"Pause Round End"
+	{
+		"fr"			"Le jeu se mettra en pause à la fin du round"
+	}
+	"Pause Limit"
+	{
+		"fr"			"Toutes vos pauses ont été utilisées."
+	}
+	"Pause Non-player"
+	{
+		"fr"			"Vous devez être T ou CT pour utiliser /pause"
+	}
+	"Pause Offer"
+	{
+		"fr"			"ont demandé une pause. S'il vous plaît, tapez /pause pour interrompre le match."
+	}
+	"Pause Not Enabled"
+	{
+		"fr"			"sv_pauseable est réglé sur 0. Fonction Pause désactivée."
+	}
+	"Unpause Notice"
+	{
+		"fr"			"Le match est maintenant en pause. S'il vous plaît, tapez /unpause pour unpause le match"
+	}
+	"Unpause Offer"
+	{
+		"fr"			"ont demandé à annuler la pause. S'il vous plaît, tapez /unpause pour unpause le match"
+	}
+	"Unpaused Match"
+	{
+		"fr"			"ont réactivé le match"
+	}
+	"Unpause Non-player"
+	{
+		"fr"			"Vous devez être en T ou CT pour utiliser /unpause"
+	}
+	"Pause Not Confirmed"
+	{
+		"fr"			"L'offre de pause n'a pas été confirmée par l'autre équipe"
+	}
+	"Unpause Timer"
+	{
+		"fr"			"secondes jusqu'à ce que la partie reprenne"
+	}
+	"Unpause Auto"
+	{
+		"fr"			"Le délai est atteint, le match est relancé automatique."
+	}
+	"Paused Via Rcon"
+	{
+		"fr"			"Le serveur n'est pas en pause ou a été interrompue par rcon"
+	}
+	"Knife Vote Team"
+	{
+		"fr"			"votent pour stay ou swap les équipes"
+	}
+	"Knife Vote"
+	{
+		"fr"			"Tapez /stay ou /switch"
+	}
+	"Knife Stay"
+	{
+		"fr"			"ont voté pour rester"
+	}
+	"Knife Switch"
+	{
+		"fr"			"ont voté pour changer d'équipe"
+	}
+	"Set Name CT"
+	{
+		"fr"			"Contre-terroristes Veuillez définir le nom de l'équipe"
+	}
+	"Set Name T"
+	{
+		"fr"			"Terroristes Veuillez définir le nom de l'équipe"
+	}
+	"Set Name Both"
+	{
+		"fr"			"Équipes veuillez définir vos noms d'équipe"
+	}
+	"Set Name CMD"
+	{
+		"fr"			"Pour définir le nom de l'équipe, s'il vous plaît tapez /name Nom de l'équipe"
+	}
+	"Live"
+	{
+		"fr"			"Le match est maintenant LIVE!"
+	}
+	"Live on 3"
+	{
+		"fr"			"Live dans 3"
+	}
+	"Knife On 3"
+	{
+		"fr"			"Knife dans 3"
+	}
+	"Knife"
+	{
+		"fr"			"COUTEAU!"
+	}
+	"Good Luck"
+	{
+		"fr"			"Good luck, Have Fun!"
+	}
+	"Powered By"
+	{
+		"fr"			"Alimenté par"
+	}	
+	"Admin_Menu WarMod Commands"
+	{
+		"fr"			"WarMod"
+	}
+	"Admin_Menu Enable ReadyUp"
+	{
+		"fr"			"Activer ReadyUp"
+	}
+	"Admin_Menu Disable ReadyUp"
+	{
+		"fr"			"Desactiver ReadyUp"
+	}
+	"Admin_Menu Knife"
+	{
+		"fr"			"couteau"
+	}
+	"Admin_Menu Force Start"
+	{
+		"fr"			"Forcer le lancement"
+	}
+	"Admin_Menu Force End"
+	{
+		"fr"			"Forcer l'arrêt du match"
+	}
+	"Admin_Menu Cancel Half"
+	{
+		"fr"			"Annuler le side"
+	}
+	"Admin_Menu Cancel Match"
+	{
+		"fr"			"Annuler le match"
+	}
+	"Admin_Menu Cancel Knife"
+	{
+		"fr"			"Annuler le couteau"
+	}
+	"Admin_Menu ForceAllReady"
+	{
+		"fr"			"Forcer les joueurs à être ready"
+	}
+	"Admin_Menu ForceAllUnready"
+	{
+		"fr"			"Forcer les joueurs à être unready"
+	}
+	"Admin_Menu ForceAllSpectate"
+	{
+		"fr"			"Tous en Spectate"
+	}
+	"Admin_Menu Activate WarMod"
+	{
+		"fr"			"Activer WarMod"
+	}
+	"Admin_Menu Deactivate WarMod"
+	{
+		"fr"			"Desactiver WarMod"
+	}
+}

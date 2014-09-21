@@ -1,0 +1,401 @@
+"Phrases"
+{
+	"Safe Mode"
+	{
+		"hu"			"Biztonságos mód engedélyezve. A szolgáltatás le van tiltva."
+	}
+	"Match Reset"
+	{
+		"hu"			"Jatek Reset – Jatszma nem eles!"
+	}
+	"Half Reset"
+	{
+		"hu"			"Felido Reset – Jatszma nem eles!"
+	}
+	"Half Time"
+	{
+		"hu"			"Felido! – Jatszma nem eles!"
+	}
+	"Half Time Auto Swap"
+	{
+		"hu"			"Felido! –Csapattok felcserelese…!"
+	}
+	"Full Time"
+	{
+		"hu"			"Jatszma vege! – GG!"
+	}
+	"Over Time"
+	{
+		"#format"		"{1:i}"
+		"hu"			"Hosszabbitas!"
+	}
+	"Over Time Sudden Death"
+	{
+		"hu"			"Hosszabbitas! Hirtelen halal!"
+	}
+	"Playing Out Notice"
+	{
+		"#format"		"{1:i}"
+		"hu"			"Megjegyzes: Mind a {1} kort le kell jatszani!"
+	}
+	"Ready"
+	{
+		"hu"			"Keszen allsz!
+	}
+	"Not Ready"
+	{
+		"hu"			"Nem allsz keszen!
+	}
+	"Score Overtime"
+	{
+		"hu"			"Hosszabbitas: "
+	}
+	"Score Overall"
+	{
+		"hu"			"Vegeredmeny: "
+	}
+	"Knife Round Cancelled"
+	{
+		"hu"			"Kes kor leallitva –Jatszma nem eles"
+	}
+	"Knife Round Inactive"
+	{
+		"hu"			"Kes kor nem aktiv"
+	}
+	"Ready System Enabled"
+	{
+		"hu"			"Felkeszulesi rendszer - Engedelyzeve"
+	}
+	"Ready System Disabled"
+	{
+		"hu"			"Felkeszulesi rendszer - Kikapcsolva"
+	}
+	"Set Active"
+	{
+		"hu"			"Aktivalva"
+	}
+	"Set Inactive"
+	{
+		"hu"			"Inaktivalva"
+	}
+	"Console Ready"
+	{
+		"hu"			"Console nem all keszen"
+	}
+	"Console Not Ready"
+	{
+		"hu"			"Console nem keszen all"
+	}
+	"Not on Team"
+	{
+		"hu"			"Nem tartozol egy csapatba sem"
+	}
+	"Already Ready"
+	{
+		"hu"			"Mar keszen allsz"
+	}
+	"Already Not Ready"
+	{
+		"hu"			"Meg mindig nem allsz keszen"
+	}
+	"Forced Ready"
+	{
+		"hu"			"Mindenki keszen all"
+	}
+	"Forced Not Ready"
+	{
+		"hu"			"Senki sem all keszen"
+	}
+	"Forced Spectate"
+	{
+		"hu"			"Kénytelen minden játékos spectate"
+	}
+	"Match Not In Progress"
+	{
+		"hu"			"A jatszma nem aktiv"
+	}
+	"T Winning"
+	{
+		"#format"		"{1:s}" 
+		"hu"			"{1} nyertek"
+	}
+	"Tied"
+	{
+		"hu"			"Egyeblo allas"
+	}
+	"CT Winning"
+	{
+		"#format"		"{1:s}" 
+		"hu"			"{1} nyertek"
+	}
+	"Change Teams Midgame"
+	{
+		"hu"			"Blokkolva – A jatszam aktiv"
+	}
+	"Maximum Players"
+	{
+		"hu"			"A csapatok elertek a maximalis letszamot"
+	}
+	"Nightvision Blocked"
+	{
+		"hu"			"Ejjellato blokkolva"
+	}
+	"Grenades Blocked"
+	{
+		"hu"			"Granatok blokkolva"
+	}
+	"Ready System"
+	{
+		"hu"			"Felkeszulesi rendszer"
+	}
+	"Match Begin Msg"
+	{
+		"#format"		"{1:i}" 
+		"hu"			"A jatszma elkezdodik amint {1} jatekos keszen all"
+	}
+	"No Players Found"
+	{
+		"hu"			"Nem talalhato jatekos"
+	}
+	"Info Not Ready"
+	{
+		"hu"			"Nem all keszen:"
+	}
+	"Info Exit"
+	{
+		"hu"			"Kilepes"
+	}
+	"Ready System Disabled2"
+	{
+		"hu"			"Felkeszulesi rendszer nincs engedelyezve"
+	}
+	"ShowInfo Disabled"
+	{
+		"hu"			"A Ready Rendszer képernyő nincs engedélyezve" 
+	}
+	"Match Is Live"
+	{
+		"hu"			"A jatszma eles"
+	}
+	"WarMod Inactive"
+	{
+		"hu"			"A WarMod nem aktiv"
+	}
+	"Change T Name"
+	{
+		"#format"		"{1:s}"
+		"hu"			"Terroristak neve atallitva '{1}'"
+	}
+	"Change CT Name"
+	{
+		"#format"		"{1:s}"
+		"hu"			"Elharitok neve atallitva '{1}'"
+	}
+	"Console"
+	{
+		"hu"			"Console: "
+	}
+	"Available Commands"
+	{
+		"hu"			"Lehetseges parancsok"
+	}
+	"No Permission"
+	{
+		"hu"			"Nincs jogosultsagod ehhez a parancshoz"
+	}
+	"Set Minready"
+	{
+		"#format"		"{1:i}"
+		"hu"			"wm_min_ready {1} -re allitva"
+	}
+	"Set Maxrounds"
+	{
+		"#format"		"{1:i}"
+		"hu"			"wm_max_rounds {1} –re allitva"
+	}
+	"WarMod Rcon Only"
+	{
+		"hu"			"Admin parancsok Rcon-ra korlatozva"
+	}
+	"Set Password"
+	{
+		"#format"		"{1:s}"
+		"hu"			"sv_password '{1}' allitva"
+	}
+	"Autokick"
+	{
+		"hu"			"Automatikusan ki lettel dobva a serverrol"
+	}
+	"Names Required"
+	{
+		"hu"			"Addig nem kezdodi kaz eles jatszma míg mindenki be nem allitja a csapat nevet"
+	}
+	"Pause Freeze Time"
+	{
+		"hu"			"Játék megakad, befagyasztására idő"
+	}
+	"Pause Round End"
+	{
+		"hu"			"Játék szüneteltetése ha a végén a kerek"
+	}
+	"Pause Limit"
+	{
+		"hu"			"Már használta a szünet"
+	}
+	"Pause Non-player"
+	{
+		"hu"			"Kell lennie a T vagy CT /pause"
+	}
+	"Pause Offer"
+	{
+		"hu"			"kérték a szünet. Kérjük, írja be a szünet /pause a mérkőzés"
+	}
+	"Pause Not Enabled"
+	{
+		"hu"			"sv_pauseable 0 értékre van állítva. Szünet funkció nincs engedélyezve"
+	}
+	"Unpause Notice"
+	{
+		"hu"			"Mérkőzés most szünetel. Kérjük, írja be a /unpause a újraindíthatja a mérkőzés"
+	}
+	"Unpause Offer"
+	{
+		"hu"			"kérte, hogy a játék folytatásához. Kérjük, írja be a /unpause a újraindíthatja a mérkőzés"
+	}
+	"Unpaused Match"
+	{
+		"hu"			"van unpaused a mérkőzés"
+	}
+	"Unpause Non-player"
+	{
+		"hu"			"Kell lennie a T vagy CT /unpause"
+	}
+	"Pause Not Confirmed"
+	{
+		"hu"			"Szünet ajánlat nem erősítették meg a másik csapat"
+	}
+	"Unpause Timer"
+	{
+		"hu"			"másodperc játék-ig az automatikus megkezdődhet"
+	}
+	"Unpause Auto"
+	{
+		"hu"			"Meccs volt automatikus Unpaused, mert elérte a határidő"
+	}
+	"Paused Via Rcon"
+	{
+		"hu"			"Szerver nem szünetel, vagy szüneteltetve keresztül rcon"
+	}
+	"Knife Vote Team"
+	{
+		"hu"			"a(z), vagy swap csapat szavaznak"
+	}
+	"Knife Vote"
+	{
+		"hu"			"Kérjük, írja be /stay vagy /switch"
+	}
+	"Knife Stay"
+	{
+		"hu"			"szavazott, hogy felfüggeszti"
+	}
+	"Knife Switch"
+	{
+		"hu"			"szavaztam volna váltani a csapat"
+	}
+	"Set Name CT"
+	{
+		"hu"			"Counter-terroristák Állítsa be a csapat neve"
+	}
+	"Set Name T"
+	{
+		"hu"			"Terroristák Állítsa be a csapat neve"
+	}
+	"Set Name Both"
+	{
+		"hu"			"Csapatok állítsa be a csapat neve"
+	}
+	"Set Name CMD"
+	{
+		"hu"			"A csapat neve legyen szíves típusának beállítása /name Csapatnév"
+	}
+	"Live"
+	{
+		"hu"			"A mérkőzés van most LIVE!"
+	}
+	"Live on 3"
+	{
+		"hu"			"Élő három"
+	}
+	"Knife On 3"
+	{
+		"hu"			"kés három"
+	}
+	"Knife"
+	{
+		"hu"			"kés!"
+	}
+	"Good Luck"
+	{
+		"hu"			"Sok szerencsét, jó szórakozást!"
+	}
+	"Powered By"
+	{
+		"hu"			"hajtású által"
+	}	
+	"Admin_Menu WarMod Commands"
+	{
+		"hu"			"WarMod parancsok"
+	}
+	"Admin_Menu Enable ReadyUp"
+	{
+		"hu"			"Felkeszules engedelyezese"
+	}
+	"Admin_Menu Disable ReadyUp"
+	{
+		"hu"			"Felkeszules tiltasa"
+	}
+	"Admin_Menu Knife"
+	{
+		"hu"			"Kes"
+	}
+	"Admin_Menu Force Start"
+	{
+		"hu"			"Inditas"
+	}
+	"Admin_Menu Force End"
+	{
+		"hu"			"Vege"
+	}
+	"Admin_Menu Cancel Half"
+	{
+		"hu"			"Felebeszakitas"
+	}
+	"Admin_Menu Cancel Match"
+	{
+		"hu"			"Jatszma torlese"
+	}
+	"Admin_Menu Cancel Knife"
+	{
+		"hu"			"Keskor torlese"
+	}
+	"Admin_Menu ForceAllReady"
+	{
+		"hu"			"Mindneki keszen alljon"
+	}
+	"Admin_Menu ForceAllUnready"
+	{
+		"hu"			"Senki ne alljon keszen"
+	}
+	"Admin_Menu ForceAllSpectate"
+	{
+		"hu"			"Minden Spectate erő" 
+	}
+	"Admin_Menu Activate WarMod"
+	{
+		"hu"			"WarMod aktivalasa"
+	}
+	"Admin_Menu Deactivate WarMod"
+	{
+		"hu"			"WarMod deaktivalasa"
+	}
+}
