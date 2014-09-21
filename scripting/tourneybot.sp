@@ -6387,7 +6387,7 @@ public Action:ShowPluginInfo(Handle:timer, any:client)
 		PrintToConsole(client, "===============================================================================");
 		PrintToConsole(client, "This server is running TourneyBot %s Server Plugin", WM_VERSION);
 		PrintToConsole(client, "");
-		PrintToConsole(client, "Created by Twelve-60 and updated by Versatile [BFG]");
+		PrintToConsole(client, "Created by Skettios, Based off WarMod [BFG]");
 		PrintToConsole(client, "");
 		PrintToConsole(client, "Messagemode commands:				Aliases:");
 		PrintToConsole(client, "  /ready - Mark yourself as ready 		  /rdy /r");
