@@ -53,11 +53,6 @@ new Handle:g_f_on_end_match = INVALID_HANDLE;
 
 /* cvars */
 new Handle:g_h_lw_enabled = INVALID_HANDLE;
-new Handle:g_h_lw_address = INVALID_HANDLE;
-new Handle:g_h_lw_port = INVALID_HANDLE;
-new Handle:g_h_lw_bindaddress = INVALID_HANDLE;
-new Handle:g_h_lw_group_name = INVALID_HANDLE;
-new Handle:g_h_lw_group_password = INVALID_HANDLE;
 new Handle:g_h_active = INVALID_HANDLE;
 new Handle:g_h_stats_enabled = INVALID_HANDLE;
 new Handle:g_h_stats_method = INVALID_HANDLE;
@@ -141,9 +136,6 @@ new Handle:g_h_warmod_safemode = INVALID_HANDLE;
 new bool:g_warmod_safemode = false;
 
 /* livewire */
-new Handle:g_h_lw_socket = INVALID_HANDLE;
-new bool:g_lw_connecting = false;
-new bool:g_lw_connected = false;
 
 /* modes */
 new g_overtime_mode = 0;
@@ -272,16 +264,9 @@ public OnPluginStart()
 	RegAdminCmd("roff", ReadyOff, ADMFLAG_CUSTOM1, "Turns off the ReadyUp System if enabled");
 	
 	RegAdminCmd("wm_debug_create_table", CreateTable, ADMFLAG_ROOT, "Testing purposes only, connects to the TourneyBot database and creates a match results table (if it does not already exist)");
-	RegAdminCmd("lw_reconnect", LiveWire_ReConnect, ADMFLAG_ROOT, "Reconnects LiveWire if lw_enabled is 1");
 	
 	g_h_active = CreateConVar("wm_active", "1", "Enable or disable TourneyBot as active", FCVAR_NOTIFY);
 	g_h_lw_enabled = CreateConVar("lw_enabled", "1", "Enable or disable LiveWire", FCVAR_NOTIFY);
-	g_h_lw_address = CreateConVar("lw_address", "stream.livewire.gametech.com.au", "Sets the ip/host that LiveWire will use to connect", FCVAR_NOTIFY);
-	g_h_lw_port = CreateConVar("lw_port", "12012", "Sets the port that LiveWire will use to connect", FCVAR_NOTIFY, true, 1.0);
-	g_h_lw_bindaddress = CreateConVar("lw_bindaddress", "", "Optional setting to specify which ip LiveWire will bind to (for servers with multiple ips) - blank = automatic/primary", FCVAR_NOTIFY);
-	g_h_lw_group_name = CreateConVar("lw_group_name", "", "Sets the group name that LiveWire will use", FCVAR_PROTECTED|FCVAR_DONTRECORD);
-	g_h_lw_group_password = CreateConVar("lw_group_password", "", "Sets the group password that LiveWire will use", FCVAR_PROTECTED|FCVAR_DONTRECORD);
-	
 	g_h_stats_enabled = CreateConVar("wm_stats_enabled", "1", "Enable or disable statistical logging", FCVAR_NOTIFY);
 	g_h_stats_method = CreateConVar("wm_stats_method", "2", "Sets the stats logging method: 0 = UDP stream/server logs, 1 = TourneyBot logs, 2 = both", FCVAR_NOTIFY, true, 0.0);
 	g_h_stats_trace_enabled = CreateConVar("wm_stats_trace", "0", "Enable or disable updating all player positions, every wm_stats_trace_delay seconds", FCVAR_NOTIFY);
@@ -363,7 +348,6 @@ public OnPluginStart()
 	HookConVarChange(g_h_overtime_money, OnOverTimeMoneyChange);
 	HookConVarChange(FindConVar("mp_overtime_startmoney"), OnOverTimeMoneyChangeMP);
 	HookConVarChange(FindConVar("mp_match_can_clinch"), OnPlayOutChangeMP);
-	HookConVarChange(g_h_lw_enabled, OnLiveWireChange);
 	HookConVarChange(g_h_t, OnTChange);
 	HookConVarChange(g_h_ct, OnCTChange);
 	
@@ -429,117 +413,6 @@ public OnConfigsExecuted()
 	g_warmod_safemode = GetConVarBool(g_h_warmod_safemode);
 }
 
-public Action:LiveWire_ReConnect(client, args)
-{
-	if (GetConVarBool(g_h_lw_enabled))
-	{
-		LiveWire_Disconnect();
-		LiveWire_Connect();
-	}
-	else
-	{
-		ReplyToCommand(client, "\x01 \x09[\x04%s\x09]\x01 LiveWire not enabled!", CHAT_PREFIX);
-	}
-	return Plugin_Handled;
-}
-
-LiveWire_Connect()
-{
-	if (!g_lw_connecting)
-	{
-		g_h_lw_socket = SocketCreate(SOCKET_TCP, OnSocketError);
-		new String:address[256];
-		GetConVarString(g_h_lw_address, address, sizeof(address));
-		new port = GetConVarInt(g_h_lw_port);
-		
-		// bind socket to ip address - used for servers with multiple ips
-		new String:bindaddress[32];
-		GetConVarString(g_h_lw_bindaddress, bindaddress, sizeof(bindaddress));
-		if (StrEqual(bindaddress, ""))
-		{
-			new hostIP = GetConVarInt(FindConVar("hostip"));
-			Format(bindaddress, 32, "%d.%d.%d.%d", hostIP >> 24, hostIP >> 16 & 255, hostIP >> 8 & 255, hostIP & 255);
-		}
-		// TODO: validate as ip?
-		PrintToServer("<LiveWire> Binding socket to \"%s\"", bindaddress);
-		SocketBind(g_h_lw_socket, bindaddress, 0);
-		
-		PrintToServer("<LiveWire> Connecting to \"%s:%d\"", address, port);
-		
-		SocketConnect(g_h_lw_socket, OnSocketConnected, OnSocketReceive, OnSocketDisconnected, address, port);
-		g_lw_connecting = true;
-	}
-}
-
-LiveWire_Send(const String:format[], any:...)
-{
-	decl String:event[1024];
-	// format arguments
-	VFormat(event, sizeof(event), format, 2);
-	if (GetConVarBool(g_h_lw_enabled) && g_lw_connected)
-	{
-		// add a newline to each event
-		StrCat(event, sizeof(event), "\n");
-		// send to socket
-		SocketSend(g_h_lw_socket, event);
-	}
-}
-
-LiveWire_Disconnect()
-{
-	g_lw_connecting = false;
-	// check if connected
-	if (g_lw_connected)
-	{
-		g_lw_connected = false;
-		// close socket
-		CloseHandle(g_h_lw_socket);
-	}
-}
-
-public OnSocketConnected(Handle:socket, any:arg)
-{
-	g_lw_connecting = false;
-	g_lw_connected = true;
-	PrintToServer("<LiveWire> Connected");
-	new String:username[64];
-	new String:password[512];
-	GetConVarString(g_h_lw_group_name, username, sizeof(username));
-	GetConVarString(g_h_lw_group_password, password, sizeof(password));
-	
-	new hostIP = GetConVarInt(FindConVar("hostip"));
-	new String:ipAddress[32];
-	// convert ip address to standard dotted notation
-	Format(ipAddress, sizeof(ipAddress), "%d.%d.%d.%d", hostIP >>> 24, 0xFF & (hostIP >>> 16), 0xFF & (hostIP >>> 8), 0xFF & hostIP);
-	
-	EscapeString(username, sizeof(username));
-	EscapeString(password, sizeof(password));
-	LogLiveWireEvent("{\"event\": \"server_status\", \"game\": \"csgo\", \"version\": \"%s\", \"ip\": \"%s\", \"port\": %d, \"username\": \"%s\", \"password\": \"%s\", \"unixTime\": %d}", WM_VERSION, ipAddress, GetConVarInt(FindConVar("hostport")), username, password, GetTime());
-	
-	LogPlayers(true);
-}
-
-public OnSocketReceive(Handle:socket, String:receiveData[], const dataSize, any:arg)
-{
-	/* do nothing */
-}
-
-public OnSocketDisconnected(Handle:socket, any:arg)
-{
-	g_lw_connecting = false;
-	g_lw_connected = false;
-	CloseHandle(socket);
-	PrintToServer("<LiveWire> Disconnected");
-}
-
-public OnSocketError(Handle:socket, const errorType, const errorNum, any:hFile)
-{
-	g_lw_connecting = false;
-	g_lw_connected = false;
-	LogError("GameTech LiveWire - Socket error %d (errno %d)", errorType, errorNum);
-	CloseHandle(socket);
-}
-
 public OnMapStart()
 {
 	decl String:g_MapName[64], String:g_WorkShopID[64];
@@ -557,12 +430,6 @@ public OnMapStart()
 	}
 	StringToLower(g_map, sizeof(g_map));
 	
-	if (GetConVarBool(g_h_lw_enabled) && !g_lw_connected)
-	{
-		// connect to livewire
-		LiveWire_Connect();
-	}
-	
 	if (GetConVarBool(g_h_stats_trace_enabled))
 	{
 		// start trace timer
@@ -579,21 +446,6 @@ public OnClientConnected(client)
 {
 	if (!GetConVarBool(g_h_lw_enabled)) {
 		return;
-	}
-	
-	new count = 0;
-	for (new i = 1; i <= MaxClients; i++)
-	{
-		if (IsClientConnected(i))
-		{
-			count++;
-		}
-	}
-	if (count == 1)
-	{
-		// reconnect livewire on first player join, server seems to go to sleep
-		// when there are no players in the server (e.g. server start)
-		LiveWire_ReConnect(0, 0);
 	}
 }
 
@@ -4145,8 +3997,6 @@ ReadyChecked()
 			
 			LogEvent("{\"event\": \"log_start\", \"unixTime\": %d}", GetTime());
 		}
-	
-		LogPlayers();
 	}
 }
 
@@ -5100,20 +4950,6 @@ public OnPlayOutChangeMP(Handle:cvar, const String:oldVal[], const String:newVal
 	else
 	{
 		g_play_out = false;
-	}
-}
-
-public OnLiveWireChange(Handle:cvar, const String:oldVal[], const String:newVal[])
-{
-	if (StrEqual(newVal, "1"))
-	{
-		LiveWire_Connect();
-		CreateTimer(600.0, LiveWire_Check, 0, TIMER_REPEAT);
-		CreateTimer(1800.0, LiveWire_Ping, _, TIMER_REPEAT);
-	}
-	else
-	{
-		LiveWire_Disconnect();
 	}
 }
 
@@ -6073,50 +5909,6 @@ stock LogEvent(const String:format[], any:...)
 	{
 		WriteFileLine(g_log_file, event);
 	}
-	
-	LiveWire_Send(event);
-}
-
-stock LogLiveWireEvent(const String:format[], any:...)
-{
-	decl String:event[1024];
-	VFormat(event, sizeof(event), format, 2);
-	
-	// inject timestamp into JSON object, hacky but quite simple
-	new String:timestamp[64];
-	FormatTime(timestamp, sizeof(timestamp), "%Y-%m-%d %H:%M:%S");
-	
-	// remove leading '{' from the event and add the timestamp in, including new '{'
-	Format(event, sizeof(event), "{\"timestamp\": \"%s\", %s", timestamp, event[1]);
-	
-	LiveWire_Send(event);
-}
-
-LogPlayers(bool:livewire_only=false)
-{
-	new String:ip_address[32];
-	new String:country[2];
-	new String:log_string[384];
-	for (new i = 1; i <= MaxClients; i++)
-	{
-		if (IsClientInGame(i))
-		{
-			GetClientIP(i, ip_address, sizeof(ip_address));
-			GeoipCode2(ip_address, country);
-			CS_GetLogString(i, log_string, sizeof(log_string));
-			
-			EscapeString(ip_address, sizeof(ip_address));
-			EscapeString(country, sizeof(country));
-			if (!livewire_only)
-			{
-				LogEvent("{\"event\": \"player_status\", \"player\": %s, \"address\": \"%s\", \"country\": \"%s\"}", log_string, ip_address, country);
-			}
-			else
-			{
-				LogLiveWireEvent("{\"event\": \"player_status\", \"player\": %s, \"address\": \"%s\", \"country\": \"%s\"}", log_string, ip_address, country);
-			}
-		}
-	}
 }
 
 public Action:Stats_Trace(Handle:timer)
@@ -6560,22 +6352,6 @@ public Action:HelpText(Handle:timer, any:client)
 	}
 	
 	return Plugin_Handled;
-}
-
-public Action:LiveWire_Check(Handle:timer)
-{
-	if (!g_live && !g_lw_connected && GetConVarBool(g_h_lw_enabled))
-	{
-		LiveWire_Connect();
-	}
-}
-
-public Action:LiveWire_Ping(Handle:timer)
-{
-	if (g_lw_connected)
-	{
-		LogLiveWireEvent("{\"event\": \"ping\"}");
-	}
 }
 
 public DisplayHelp(client)
