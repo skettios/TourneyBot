@@ -180,6 +180,13 @@ public Plugin:myinfo = {
 	url = "www.sourcemod.net"
 };
 
+public APLRes:AskPluginLoad2(Handle:myself, bool:late, String:error[], err_max)
+{
+	MarkNativeAsOptional("Set_StartMoney");
+	RegPluginLibrary("tourneybot");
+	return APLRes_Success;
+}
+
 public OnPluginStart()
 {	
 	LoadTranslations("tourneybot.phrases");
