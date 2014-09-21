@@ -5,7 +5,7 @@
 #include <sdktools>
 #include <geoip>
 #include <cstrike>
-#include <skettibots>
+#include <tourneybot>
 #include <basecomm>
 
 new g_player_list[MAXPLAYERS + 1];
