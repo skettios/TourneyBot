@@ -6365,13 +6365,13 @@ public DisplayHelp(client)
 {
 	if (client == 0)
 	{
-		PrintHintTextToAll("%t: .ready .unready .score .pause .unpause", "Available Commands");
+		PrintHintTextToAll("The game will automatically start when 10 people ready up\nType .ready to ready up");
 	}
 	else
 	{
 		if (IsClientConnected(client) && IsClientInGame(client))
 		{
-			PrintHintText(client, "%t: .ready .unready .score .pause .unpause", "Available Commands");
+			PrintHintText(client, "The game will automatically start when 10 people ready up\nType .ready to ready up");
 		}
 	}
 }
