@@ -625,6 +625,7 @@ ResetMatch(bool:silent)
 		}
 		// restart round
 		ServerCommand("mp_restartgame 1");
+		ServerCommand("mp_warmup_start");
 	}
 }
 
