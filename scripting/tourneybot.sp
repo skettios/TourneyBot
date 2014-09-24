@@ -451,8 +451,9 @@ public OnMapStart()
 
 public OnClientConnected(client)
 {
-	if (!GetConVarBool(g_h_lw_enabled)) {
-		return;
+	if (g_live == false || g_t_knife == false)
+	{
+		ResetMatch(true);
 	}
 }
 
@@ -589,6 +590,12 @@ ResetMatch(bool:silent)
 	g_t_pause_count = 0;
 	g_ct_pause_count = 0;
 	ServerCommand("mp_unpause_match 1");
+	
+	// Reset to warmup
+	new String:warmup_config[128];
+	GetConVarString(g_h_warmup_config, warmup_config, sizeof(warmup_config));
+	ServerCommand("exec %s", warmup_config);
+	ServerCommand("mp_warmup_start");
 	if (g_h_stored_timer != INVALID_HANDLE)
 	{
 		KillTimer(g_h_stored_timer);
@@ -625,7 +632,6 @@ ResetMatch(bool:silent)
 		}
 		// restart round
 		ServerCommand("mp_restartgame 1");
-		ServerCommand("mp_warmup_start");
 	}
 }
 
