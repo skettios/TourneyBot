@@ -459,7 +459,7 @@ public OnClientConnected(client)
 
 public Action:Timer_CheckReady(Handle:timer)
 {
-	if (g_start == false)
+	if (g_start == false || g_t_had_knife == true)
 	{
 		for (new i = 1; i <= MaxClients; i++)
 		{
